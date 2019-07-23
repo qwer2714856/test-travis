@@ -1,45 +1,39 @@
-
 language: node_js
+# nodejs版本
+node_js: 
+    - '6'
 
-node_js:
-  - "8"
-
-# 缓存依赖
+# Travis-CI Caching
 cache:
   directories:
-    - $HOME/.npm
+    - node_modules
 
-before_install:
-  - export TZ='Asia/Shanghai' # 更改时区
 
-# 依赖安装
+# S: Build Lifecycle
 install:
-  - npm install gitbook-cli -g
-  # 安装 gitbook 插件
-  - gitbook install
+  - npm install
 
-# 构建脚本
+before_script:
+
+# 无其他依赖项所以执行npm run build 构建就行了
 script:
-    # 自定义输出目录 gitbook build src dest
-  - gitbook build . ./build
-  # - gitbook build . ./build/$CUSTOM_PATH
+  - npm run build
 
-# 分支白名单
+after_script:
+  - cd ./dist
+  - git init
+  - git config user.name "${U_NAME}"
+  - git config user.email "${U_EMAIL}"
+  - git add .
+  - git commit -m "Update tools"
+  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:${P_BRANCH}
+# E: Build LifeCycle
+
+#指定分支，只有指定的分支提交时才会运行脚本
 branches:
   only:
-    - master # 只对 master 分支进行构建
-
-# GitHub Pages 部署
-deploy:
-  provider: pages
-  skip_cleanup: true
-  # 在项目仪表盘的 Settings -> Environment Variables 中配置
-  github_token: $GITHUB_TOKEN
-  # 将 build 目录下的内容推送到默认的 gh-pages 分支上，并不会连带 build 目录一起
-  local_dir: build
-  #fqdn: $CUSTOM_DOMAIN
-  name: $GIT_NAME
-  email: $GIT_EMAIL
-  on:
-    branch: master
- 
+    - master
+env:
+ global:
+   # 我将其添加到了travis-ci的环境变量中
+   #- GH_REF: github.com/yimogit/metools.git 
