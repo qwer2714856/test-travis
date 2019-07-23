@@ -4,16 +4,37 @@
   "description": "A Vue.js project",
   "author": "luchao.ding <116710782@qq.com>",
   "private": true,
+  "release": {
+    "branch": "master",
+    "verifyConditions": [
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/git",
+      "@qiwi/semantic-release-gh-pages-plugin"
+    ],
+    "publish": [
+      "@semantic-release/npm",
+      "@semantic-release/github",
+      {
+        "path": "@qiwi/semantic-release-gh-pages-plugin",
+        "msg": "updated",
+        "branch": "gh-pages"
+      }
+    ]
+  },
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
     "build": "node build/build.js",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release --branch master"
   },
   "dependencies": {
     "vue": "^2.5.2"
   },
   "devDependencies": {
+    "@qiwi/semantic-release-gh-pages-plugin": "^1.10.3",
+    "@semantic-release/changelog": "^3.0.2",
+    "@semantic-release/git": "^7.0.16",
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.22.1",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
@@ -38,6 +59,7 @@
     "postcss-loader": "^2.0.8",
     "postcss-url": "^7.2.1",
     "rimraf": "^2.6.0",
+    "semantic-release": "^15.13.18",
     "semver": "^5.3.0",
     "shelljs": "^0.7.6",
     "uglifyjs-webpack-plugin": "^1.1.1",
@@ -48,8 +70,7 @@
     "webpack": "^3.6.0",
     "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-server": "^2.9.1",
-    "webpack-merge": "^4.1.0",
-    "semantic-release": "^15.13.18"
+    "webpack-merge": "^4.1.0"
   },
   "engines": {
     "node": ">= 6.0.0",
