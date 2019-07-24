@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App'
-     //    bbbbb aaa aa aaa    aaa              
+     // tttt   bbbbb aaa aa aaa    aaa              
 Vue.config.productionTip = false
 //       
 /* eslint-disable no-new */
