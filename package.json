@@ -4,6 +4,11 @@
   "description": "A Vue.js project",
   "author": "luchao.ding <116710782@qq.com>",
   "private": true,
+  "husky": {
+    "hooks": {
+      "commit-msg": "echo $HUSKY_GIT_PARAMS"
+    }
+  },
   "release": {
     "branch": "master",
     "verifyConditions": [
