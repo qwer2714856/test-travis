@@ -18,7 +18,7 @@
       {
         "path": "@qiwi/semantic-release-gh-pages-plugin",
         "msg": "updated",
-        "branch": "gh-pages"
+        "branch": "gh-pages-1"
       }
     ]
   },
@@ -26,7 +26,7 @@
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
     "build": "node build/build.js",
-    "semantic-release": "semantic-release --branch master"
+    "semantic-release": "semantic-release --branch master --publish"
   },
   "dependencies": {
     "vue": "^2.5.2"
