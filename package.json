@@ -1,9 +1,9 @@
 {
-  "name": "xiaoge",
-  "version": "0.0.0-development",
+  "name": "xiaolvlv",
+  "version": "0.0.1-development",
   "description": "A Vue.js project",
   "author": "luchao.ding <116710782@qq.com>",
-  "private": true,
+  "private": false,
   "husky": {
     "hooks": {
       "commit-msg": "echo $HUSKY_GIT_PARAMS"
@@ -23,7 +23,7 @@
       {
         "path": "@qiwi/semantic-release-gh-pages-plugin",
         "msg": "updated",
-        "branch": "gh-pages-1"
+        "branch": "gh-pages"
       }
     ]
   },
@@ -31,7 +31,7 @@
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
     "build": "node build/build.js",
-    "semantic-release": "semantic-commit"
+    "semantic-release": "semantic-release"
   },
   "dependencies": {
     "vue": "^2.5.2"
